@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{E2365FC5-3350-BF3D-88EC-B59E4A13B595}") = "GPSgame", "Assembly-CSharp.csproj", "{922A5DD9-7F8E-C6B0-B879-77965160D93D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{922A5DD9-7F8E-C6B0-B879-77965160D93D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{922A5DD9-7F8E-C6B0-B879-77965160D93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{922A5DD9-7F8E-C6B0-B879-77965160D93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{922A5DD9-7F8E-C6B0-B879-77965160D93D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
