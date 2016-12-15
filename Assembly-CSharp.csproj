@@ -46,7 +46,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\GoogleMaps\Scripts\GoogleMap.cs" />
-     <Compile Include="Assets\Scripts\TestScript.cs" />
+     <Compile Include="Assets\Helpers\GeoHelper.cs" />
+     <Compile Include="Assets\Scripts\MapController.cs" />
+     <Compile Include="Assets\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\TesterScript.cs" />
      <None Include="Assets\GoogleMaps\README.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
