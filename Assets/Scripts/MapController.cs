@@ -99,14 +99,14 @@ public class MapController : MonoBehaviour {
 
 				Debug.Log ("lon test is: " + testArr[0] + testArr[1]);
 
-				//xyCoords = GM.LatLonToMeters (lon, lat);
+				xyCoords = GM.LatLonToMeters (lon, lat);
 				//tileCoords = GM.MetersToTile (xyCoords, settings.zoom);
 				//tileCoords = xyCoords;
-				//GM.TileSize = settings.size;
+				GM.TileSize = settings.size;
 
 				//SETUP CENTER TILE
 				//Debug.Log(debugTileArray[1,1].name.ToString());
-				debugTemporaryArray [4].GetComponent<TileScript> ().SetupTile (testArr[0], testArr[1]);
+				//debugTemporaryArray [4].GetComponent<TileScript> ().SetupTile (GM.MetersToTile(xyCoords, settings.zoom));
 				//geodeticOffsetInv ((float)lat * Mathf.Deg2Rad, (float)lon * Mathf.Deg2Rad, (float)oldLat * Mathf.Deg2Rad, (float)oldLon * Mathf.Deg2Rad, out x, out y);
 				position.x = xyCoords.x;
 				position.z = xyCoords.y;
@@ -128,8 +128,11 @@ public class MapController : MonoBehaviour {
 				oldLat = lat;
 				oldLon = lon;
 
+
+
 				//SETUP CENTRAL TILE
-				StartCoroutine(BuildMap ());
+				StartCoroutine(BuildMap (GM.MetersToTile(xyCoords, settings.zoom)));
+
 				player.transform.position = new Vector3 (0f, 0.5f, 0f);
 
 				//infoString = ("Signal lost, searching...");
@@ -156,11 +159,12 @@ public class MapController : MonoBehaviour {
 
 	}
 
-	IEnumerator BuildMap() {
+	//argument is vector2 for position in tiles array
+	IEnumerator BuildMap(Vector2 tileCoords) {
 
 		//debugTemporaryArray [4].GetComponent<TileScript> ().SetupTile (tileCoords);
 
-		/*
+
 		int i, u;
 
 		for(i=0; i<3; i++) {
@@ -172,8 +176,8 @@ public class MapController : MonoBehaviour {
 				Debug.Log ("Went past waituntil");
 			}
 		}
-		*/
-		yield return null;
+
+		//yield return null;
 	}
 	
 	[System.Serializable]
