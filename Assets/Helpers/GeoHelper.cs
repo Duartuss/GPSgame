@@ -10,9 +10,9 @@ namespace Assets.Helpers
 	//SOURCE: http://stackoverflow.com/questions/12896139/geographic-coordinates-converter
 	public static class GM
 	{
-		public const int TileSize = 512;
+		public static int TileSize = 512;
 		public const int EarthRadius = 6378137;
-		public const double InitialResolution = 2 * Math.PI * EarthRadius / TileSize;
+		public static double InitialResolution = 2 * Math.PI * EarthRadius / TileSize;
 		public const double OriginShift = 2 * Math.PI * EarthRadius / 2;
 
 		public static Vector2 LatLonToMeters(Vector2 v)
@@ -23,11 +23,30 @@ namespace Assets.Helpers
 		//Converts given lat/lon in WGS84 Datum to XY in Spherical Mercator EPSG:900913
 		public static Vector2 LatLonToMeters(double lat, double lon)
 		{
-			var p = new Vector2();
+			Vector2 p = new Vector2();
 			p.x = (float)(lon * OriginShift / 180);
 			p.y = (float)(Math.Log(Math.Tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180));
 			p.y = (float)(p.y * OriginShift / 180);
 			return new Vector2(p.x, p.y);
+		}
+
+		//Converts XY point from Spherical Mercator EPSG:900913 to lat/lon in WGS84 Datum
+		public static Vector2 MetersToLatLon(Vector2 m)
+		{
+			double lon = (m.x / OriginShift) * 180;
+			double lat = (m.y / OriginShift) * 180;
+
+			lat = 180 / Math.PI * (2 * Math.Atan( Math.Exp( lat * Math.PI / 180.0)) - Math.PI / 2.0);
+			return new Vector2((float)lat, (float)lon);
+		}
+
+		public static double[] DoubleMetersToLatLon(Vector2 m)
+		{
+			double lon = (m.x / OriginShift) * 180;
+			double lat = (m.y / OriginShift) * 180;
+
+			lat = 180 / Math.PI * (2 * Math.Atan( Math.Exp( lat * Math.PI / 180.0)) - Math.PI / 2.0);
+			return new double[2] { lon, lat }; 
 		}
 
 		//Converts pixel coordinates in given zoom level of pyramid to EPSG:900913
